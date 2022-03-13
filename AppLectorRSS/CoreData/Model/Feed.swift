@@ -21,4 +21,10 @@ class Feed: NSManagedObject {
 
     @NSManaged var entries: Set<Entry>?
 
+    // MARK: - Fetch requests
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Feed> {
+        return NSFetchRequest<Feed>(entityName: "Feed")
+    }
+
 }

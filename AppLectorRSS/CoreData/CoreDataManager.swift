@@ -60,4 +60,14 @@ class CoreDataManager {
             }
         }
     }
+
+    // MARK: - Fetch requests
+
+    func fetchEntries() throws -> [Entry] {
+        return try persistentContainer.viewContext.fetch(Entry.fetchRequest())
+    }
+
+    func fetchFeed() throws -> Feed? {
+        return try (persistentContainer.viewContext.fetch(Feed.fetchRequest())).last
+    }
 }

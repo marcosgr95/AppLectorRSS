@@ -21,12 +21,6 @@ class FeedParser: NSObject {
         
     }
 
-    let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        return formatter
-    }()
-
     var feed: Feed?
     var xmlString: String = ""
     var currentEntry: Entry?
@@ -36,10 +30,9 @@ class FeedParser: NSObject {
         xmlParser = XMLParser(data: xml)
     }
 
-    func parse() -> Feed? {
+    func parse() -> Void {
         xmlParser?.delegate = self
         xmlParser?.parse()
-        return feed
     }
 }
 
@@ -66,13 +59,17 @@ extension FeedParser: XMLParserDelegate {
                 feed?.entries?.insert(currentEntry!)
                 currentEntry = nil
             } else if elementName == TagKeys.published {
-                currentEntry?.published = dateFormatter.date(from: xmlString)
+                currentEntry?.published = Date.theVergeRSSDateFormatter.date(from: xmlString)
             } else if elementName == TagKeys.updatedDate {
-                currentEntry?.updatedDate = dateFormatter.date(from: xmlString)
+                currentEntry?.updatedDate = Date.theVergeRSSDateFormatter.date(from: xmlString)
             } else if elementName == TagKeys.content {
                 currentEntry?.content = xmlString
             } else if elementName == TagKeys.link {
                 currentEntry?.link = xmlString
+            }
+        } else {
+            if elementName == TagKeys.updatedDate {
+                feed?.updatedDate = Date.theVergeRSSDateFormatter.date(from: xmlString)
             }
         }
     }

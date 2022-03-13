@@ -13,10 +13,12 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
     // MARK: - IBOutlets
 
     @IBOutlet var entriesTableView: UITableView!
+    @IBOutlet var lastUpdateLabel: UILabel!
 
     // MARK: - Variables
 
     var entries = [Entry]()
+    var feed: Feed?
     let presenter: EntryListPresenter = EntryListPresenter()
 
     // MARK: - Life cycle methods
@@ -34,6 +36,10 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
 
     func applyStyles() {
         title = "The Verge RSS Feed"
+    }
+
+    func setLastUpdate() {
+        lastUpdateLabel.text = "Last update: \(Date.humanFriendlyDateFormat.string(from: feed?.updatedDate ?? Date()))"
     }
 
     private func createRefreshControl() {
@@ -71,8 +77,12 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
 
     func presentFeed(_ feed: Feed?) {
         Task {
+            self.feed = feed
             self.entries = Array(feed?.entries ?? []).sorted(by: <)
-            self.entriesTableView.reloadData()
+            DispatchQueue.main.async {
+                self.entriesTableView.reloadData()
+                self.setLastUpdate()
+            }
         }
     }
 

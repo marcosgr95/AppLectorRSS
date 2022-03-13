@@ -21,15 +21,26 @@ class EntryListPresenter {
 
     public func readFeed() async throws {
         do {
-            guard let url = URL(string: "https://www.theverge.com/apple/rss/index.xml") else { return }
-            let (data, _) = try await URLSession.shared.data(from: url)
+            guard let url = URL(string: NetworkingConstants.theVergeRSSFeed)
+            else {
+                throw NetworkingError.badURL
+            }
+            let (data, response) = try await URLSession.shared.data(from: url)
+            guard
+                let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 200
+            else {
+                throw NetworkingError.badRequest
+            }
             let parser = FeedParser(withXMLData: data)
-            let feed = parser.parse()
+            parser.parse()
+            
             CoreDataManager.shared.saveContext()
-            view?.presentFeed(feed)
+            view?.presentFeed(try CoreDataManager.shared.fetchFeed())
         } catch {
             print("anything \(error)")
-            // TODO present the entries from the database while throwing an error, so presentEntries should return both an array of entries and an error
+            // TODO present the entries from the database while throwing an error, so presentEntries should return both an array of entries and an error (string, so as for the view to remain dumb)
+            view?.presentFeed(try? CoreDataManager.shared.fetchFeed())
         }
     }
 

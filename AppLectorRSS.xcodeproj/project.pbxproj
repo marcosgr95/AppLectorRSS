@@ -27,6 +27,8 @@
 		6BDBF61C27DE055D0057CD37 /* EntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF61A27DE055D0057CD37 /* EntryCell.swift */; };
 		6BDBF61D27DE055D0057CD37 /* EntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BDBF61B27DE055D0057CD37 /* EntryCell.xib */; };
 		6BDBF61F27DE0E200057CD37 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF61E27DE0E200057CD37 /* UIImageViewExtension.swift */; };
+		6BDBF62127DE5D280057CD37 /* NetworkingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF62027DE5D280057CD37 /* NetworkingErrors.swift */; };
+		6BDBF62327DE5DEE0057CD37 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF62227DE5DEE0057CD37 /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		6BDBF61A27DE055D0057CD37 /* EntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCell.swift; sourceTree = "<group>"; };
 		6BDBF61B27DE055D0057CD37 /* EntryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntryCell.xib; sourceTree = "<group>"; };
 		6BDBF61E27DE0E200057CD37 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		6BDBF62027DE5D280057CD37 /* NetworkingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrors.swift; sourceTree = "<group>"; };
+		6BDBF62227DE5DEE0057CD37 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				6BDBF5FC27DCBFD80057CD37 /* FeedParser.swift */,
+				6BDBF62027DE5D280057CD37 /* NetworkingErrors.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 			children = (
 				6BDBF60227DDF9930057CD37 /* StringExtension.swift */,
 				6BDBF61E27DE0E200057CD37 /* UIImageViewExtension.swift */,
+				6BDBF62227DE5DEE0057CD37 /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -296,9 +302,11 @@
 				6BDBF60627DDFD760057CD37 /* EntryListPresenter.swift in Sources */,
 				6BDBF60327DDF9930057CD37 /* StringExtension.swift in Sources */,
 				6BDBF5E027DA88270057CD37 /* EntryListViewController.swift in Sources */,
+				6BDBF62127DE5D280057CD37 /* NetworkingErrors.swift in Sources */,
 				6BDBF61627DE033B0057CD37 /* EntryListViewController+TableView.swift in Sources */,
 				6BDBF5DC27DA88270057CD37 /* AppDelegate.swift in Sources */,
 				6BDBF61427DE02410057CD37 /* Entry.swift in Sources */,
+				6BDBF62327DE5DEE0057CD37 /* DateExtension.swift in Sources */,
 				6BDBF61F27DE0E200057CD37 /* UIImageViewExtension.swift in Sources */,
 				6BDBF5DE27DA88270057CD37 /* SceneDelegate.swift in Sources */,
 				6BDBF61C27DE055D0057CD37 /* EntryCell.swift in Sources */,
