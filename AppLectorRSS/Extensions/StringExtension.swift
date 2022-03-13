@@ -21,4 +21,27 @@ extension String {
             .replacingOccurrences(of: "\"", with: "")
     }
 
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = withTrimmedTags?.data(using: .utf8) else { return nil }
+        do {
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            return nil
+        }
+    }
+
+    var htmlToString: String {
+        return htmlToAttributedString?.string ?? ""
+    }
+
+    var withTrimmedTags: String? {
+        let pattern: String = "(<figure>|<\\/figure>|<img.*\\/>|<figcaption>.*</figcaption>)"
+        let range: NSRange = NSRange(location: 0, length: self.utf16.count)
+        let regex = try? NSRegularExpression(pattern: pattern)
+        let mutableString = NSMutableString(string: self)
+
+        regex?
+            .replaceMatches(in: mutableString, options: .reportProgress, range: range, withTemplate: "")
+        return mutableString as String
+    }
 }
