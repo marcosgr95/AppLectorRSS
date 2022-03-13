@@ -22,7 +22,6 @@ class ViewController: UIViewController {
                 let (data, _) = try await URLSession.shared.data(from: url)
                 let parser = FeedParser(withXMLData: data)
                 entries = parser.parse()?.entries ?? Set()
-                print(entries.map({$0.title}))
                 CoreDataManager.shared.saveContext()
             } catch {
                 print("anything \(error)")
