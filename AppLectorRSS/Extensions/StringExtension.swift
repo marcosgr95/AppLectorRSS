@@ -21,8 +21,10 @@ extension String {
             .replacingOccurrences(of: "\"", with: "")
     }
 
-    var htmlToAttributedString: NSAttributedString? {
-        guard let data = withTrimmedTags?.data(using: .utf8) else { return nil }
+    func htmlToAttributedString(withTrimmedTags: Bool = false) -> NSAttributedString? {
+        guard
+            let data = (withTrimmedTags ? self.withTrimmedTags : self)?.data(using: .utf8)
+        else { return nil }
         do {
             return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
         } catch {
@@ -30,8 +32,8 @@ extension String {
         }
     }
 
-    var htmlToString: String {
-        return htmlToAttributedString?.string ?? ""
+    func htmlToString(withTrimmedTags: Bool = false) -> String {
+        return htmlToAttributedString(withTrimmedTags: withTrimmedTags)?.string ?? ""
     }
 
     var withTrimmedTags: String? {

@@ -54,6 +54,7 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
     }
 
     private func readFeed() {
+        self.entriesTableView.refreshControl?.beginRefreshing()
         Task {
             do {
                 try await presenter.readFeed()
@@ -84,6 +85,11 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
                 self.setLastUpdate()
             }
         }
+    }
+
+    func presentDetail(entry: Entry) {
+        let detailVC = EntryDetailViewController(entry: entry)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 
 }

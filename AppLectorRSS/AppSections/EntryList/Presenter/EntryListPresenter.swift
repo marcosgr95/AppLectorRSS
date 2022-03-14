@@ -8,6 +8,7 @@
 import Foundation
 
 protocol EntryListPresenterDelegate: AnyObject {
+    func presentDetail(entry: Entry)
     func presentFeed(_ feed: Feed?)
 }
 
@@ -18,6 +19,10 @@ class EntryListPresenter {
     weak var view: EntryListPresenterDelegate?
 
     // MARK: - Public methods
+
+    public func presentDetail(entry: Entry) {
+        view?.presentDetail(entry: entry)
+    }
 
     public func readFeed() async throws {
         do {

@@ -14,6 +14,7 @@ extension UIImageView {
     }
 
     func load(urlString: String?) {
+        self.image = UIImageView.defaultImage
         guard
             let urlString = urlString,
             let url = URL(string: urlString)
@@ -22,7 +23,6 @@ extension UIImageView {
     }
 
     func load(url: URL) {
-        self.image = UIImageView.defaultImage
         DispatchQueue.global().async { [weak self] in
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {

@@ -23,7 +23,7 @@ class EntryCell: UITableViewCell {
 
     public func configure(pictureURL: String?, title: String?, description: String?) {
         entryTitle.text = title
-        entryDescription.text = description?.htmlToString
+        entryDescription.text = description?.htmlToString(withTrimmedTags: true)
         entryPicture.load(urlString: pictureURL)
     }
 
