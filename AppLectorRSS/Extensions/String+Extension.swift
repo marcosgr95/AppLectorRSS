@@ -1,5 +1,5 @@
 //
-//  StringExtension.swift
+//  String+Extension.swift
 //  AppLectorRSS
 //
 //  Created by Marcos García Rouco on 13/3/22.

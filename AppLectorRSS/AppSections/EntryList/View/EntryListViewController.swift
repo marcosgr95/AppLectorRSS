@@ -38,10 +38,6 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
         title = "The Verge RSS Feed"
     }
 
-    func setLastUpdate() {
-        lastUpdateLabel.text = "Last update: \(Date.humanFriendlyDateFormat.string(from: feed?.updatedDate ?? Date()))"
-    }
-
     private func createRefreshControl() {
         entriesTableView.refreshControl = UIRefreshControl()
         entriesTableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
@@ -62,11 +58,15 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
                     self.entriesTableView.refreshControl?.endRefreshing()
                 }
             } catch {
-                // TODO
+                showNetworkingErrorAlert(.badRequest)
             }
         }
     }
 
+    func setLastUpdate() {
+        lastUpdateLabel.text = "Last update: \(Date.humanFriendlyDateFormat.string(from: feed?.updatedDate ?? Date()))"
+    }
+    
     func setUpTableView() {
         entriesTableView.delegate = self
         entriesTableView.dataSource = self
@@ -76,8 +76,11 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
 
     // MARK: - EntryListPresenterDelegate methods
 
-    func presentFeed(_ feed: Feed?) {
+    func presentFeed(_ feed: Feed?, _ error: NetworkingError?) {
         Task {
+            if let error = error {
+                self.showNetworkingErrorAlert(error)
+            }
             self.feed = feed
             self.entries = Array(feed?.entries ?? []).sorted(by: <)
             DispatchQueue.main.async {

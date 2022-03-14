@@ -69,7 +69,7 @@ class EntryDetailViewController: UIViewController, EntryDetailPresenterDelegate 
     // MARK: - EntryDetailPresenterDelegate
 
     func presentError(_ error: NetworkingError) {
-        // TODO display alert
+        showNetworkingErrorAlert(error)
     }
 
 }

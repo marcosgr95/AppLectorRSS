@@ -9,7 +9,7 @@ import Foundation
 
 protocol EntryListPresenterDelegate: AnyObject {
     func presentDetail(entry: Entry)
-    func presentFeed(_ feed: Feed?)
+    func presentFeed(_ feed: Feed?, _ error: NetworkingError?)
 }
 
 class EntryListPresenter {
@@ -41,11 +41,11 @@ class EntryListPresenter {
             parser.parse()
             
             CoreDataManager.shared.saveContext()
-            view?.presentFeed(try CoreDataManager.shared.fetchFeed())
+            view?.presentFeed(try CoreDataManager.shared.fetchFeed(), nil)
+        } catch let error as NetworkingError {
+            view?.presentFeed(try? CoreDataManager.shared.fetchFeed(), error)
         } catch {
-            print("anything \(error)")
-            // TODO present the entries from the database while throwing an error, so presentEntries should return both an array of entries and an error (string, so as for the view to remain dumb)
-            view?.presentFeed(try? CoreDataManager.shared.fetchFeed())
+            view?.presentFeed(try? CoreDataManager.shared.fetchFeed(), NetworkingError.badURL)
         }
     }
 

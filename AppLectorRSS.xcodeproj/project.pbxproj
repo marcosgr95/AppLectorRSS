@@ -18,7 +18,7 @@
 		6BDBF5F727DBFF150057CD37 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF5F627DBFF150057CD37 /* CoreDataManager.swift */; };
 		6BDBF5FA27DC03930057CD37 /* SWXMLHash in Frameworks */ = {isa = PBXBuildFile; productRef = 6BDBF5F927DC03930057CD37 /* SWXMLHash */; };
 		6BDBF5FD27DCBFD80057CD37 /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF5FC27DCBFD80057CD37 /* FeedParser.swift */; };
-		6BDBF60327DDF9930057CD37 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF60227DDF9930057CD37 /* StringExtension.swift */; };
+		6BDBF60327DDF9930057CD37 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF60227DDF9930057CD37 /* String+Extension.swift */; };
 		6BDBF60627DDFD760057CD37 /* EntryListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF60527DDFD760057CD37 /* EntryListPresenter.swift */; };
 		6BDBF60F27DDFEEB0057CD37 /* NetworkingConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF60E27DDFEEB0057CD37 /* NetworkingConstants.swift */; };
 		6BDBF61227DE01FB0057CD37 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF61127DE01FB0057CD37 /* Feed.swift */; };
@@ -26,12 +26,13 @@
 		6BDBF61627DE033B0057CD37 /* EntryListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF61527DE033B0057CD37 /* EntryListViewController+TableView.swift */; };
 		6BDBF61C27DE055D0057CD37 /* EntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF61A27DE055D0057CD37 /* EntryCell.swift */; };
 		6BDBF61D27DE055D0057CD37 /* EntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BDBF61B27DE055D0057CD37 /* EntryCell.xib */; };
-		6BDBF61F27DE0E200057CD37 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF61E27DE0E200057CD37 /* UIImageViewExtension.swift */; };
+		6BDBF61F27DE0E200057CD37 /* UIImage+ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF61E27DE0E200057CD37 /* UIImage+ViewExtension.swift */; };
 		6BDBF62127DE5D280057CD37 /* NetworkingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF62027DE5D280057CD37 /* NetworkingErrors.swift */; };
-		6BDBF62327DE5DEE0057CD37 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF62227DE5DEE0057CD37 /* DateExtension.swift */; };
+		6BDBF62327DE5DEE0057CD37 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF62227DE5DEE0057CD37 /* Date+Extension.swift */; };
 		6BDBF62627DF9C010057CD37 /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF62427DF9C010057CD37 /* EntryDetailViewController.swift */; };
 		6BDBF62727DF9C010057CD37 /* EntryDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BDBF62527DF9C010057CD37 /* EntryDetailViewController.xib */; };
 		6BDBF62927DF9CB30057CD37 /* EntryDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF62827DF9CB30057CD37 /* EntryDetailPresenter.swift */; };
+		6BDBF62B27DFA9A00057CD37 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF62A27DFA9A00057CD37 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +47,7 @@
 		6BDBF5EC27DA88290057CD37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BDBF5F627DBFF150057CD37 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		6BDBF5FC27DCBFD80057CD37 /* FeedParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedParser.swift; sourceTree = "<group>"; };
-		6BDBF60227DDF9930057CD37 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		6BDBF60227DDF9930057CD37 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		6BDBF60527DDFD760057CD37 /* EntryListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListPresenter.swift; sourceTree = "<group>"; };
 		6BDBF60E27DDFEEB0057CD37 /* NetworkingConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingConstants.swift; sourceTree = "<group>"; };
 		6BDBF61127DE01FB0057CD37 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
@@ -54,12 +55,13 @@
 		6BDBF61527DE033B0057CD37 /* EntryListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryListViewController+TableView.swift"; sourceTree = "<group>"; };
 		6BDBF61A27DE055D0057CD37 /* EntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCell.swift; sourceTree = "<group>"; };
 		6BDBF61B27DE055D0057CD37 /* EntryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntryCell.xib; sourceTree = "<group>"; };
-		6BDBF61E27DE0E200057CD37 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		6BDBF61E27DE0E200057CD37 /* UIImage+ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+ViewExtension.swift"; sourceTree = "<group>"; };
 		6BDBF62027DE5D280057CD37 /* NetworkingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrors.swift; sourceTree = "<group>"; };
-		6BDBF62227DE5DEE0057CD37 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		6BDBF62227DE5DEE0057CD37 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		6BDBF62427DF9C010057CD37 /* EntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
 		6BDBF62527DF9C010057CD37 /* EntryDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntryDetailViewController.xib; sourceTree = "<group>"; };
 		6BDBF62827DF9CB30057CD37 /* EntryDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailPresenter.swift; sourceTree = "<group>"; };
+		6BDBF62A27DFA9A00057CD37 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,9 +132,10 @@
 		6BDBF60127DDF9840057CD37 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				6BDBF60227DDF9930057CD37 /* StringExtension.swift */,
-				6BDBF61E27DE0E200057CD37 /* UIImageViewExtension.swift */,
-				6BDBF62227DE5DEE0057CD37 /* DateExtension.swift */,
+				6BDBF60227DDF9930057CD37 /* String+Extension.swift */,
+				6BDBF61E27DE0E200057CD37 /* UIImage+ViewExtension.swift */,
+				6BDBF62227DE5DEE0057CD37 /* Date+Extension.swift */,
+				6BDBF62A27DFA9A00057CD37 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -311,14 +314,15 @@
 				6BDBF61227DE01FB0057CD37 /* Feed.swift in Sources */,
 				6BDBF60627DDFD760057CD37 /* EntryListPresenter.swift in Sources */,
 				6BDBF62627DF9C010057CD37 /* EntryDetailViewController.swift in Sources */,
-				6BDBF60327DDF9930057CD37 /* StringExtension.swift in Sources */,
+				6BDBF60327DDF9930057CD37 /* String+Extension.swift in Sources */,
 				6BDBF5E027DA88270057CD37 /* EntryListViewController.swift in Sources */,
 				6BDBF62127DE5D280057CD37 /* NetworkingErrors.swift in Sources */,
 				6BDBF61627DE033B0057CD37 /* EntryListViewController+TableView.swift in Sources */,
+				6BDBF62B27DFA9A00057CD37 /* UIViewController+Extension.swift in Sources */,
 				6BDBF5DC27DA88270057CD37 /* AppDelegate.swift in Sources */,
 				6BDBF61427DE02410057CD37 /* Entry.swift in Sources */,
-				6BDBF62327DE5DEE0057CD37 /* DateExtension.swift in Sources */,
-				6BDBF61F27DE0E200057CD37 /* UIImageViewExtension.swift in Sources */,
+				6BDBF62327DE5DEE0057CD37 /* Date+Extension.swift in Sources */,
+				6BDBF61F27DE0E200057CD37 /* UIImage+ViewExtension.swift in Sources */,
 				6BDBF5DE27DA88270057CD37 /* SceneDelegate.swift in Sources */,
 				6BDBF61C27DE055D0057CD37 /* EntryCell.swift in Sources */,
 				6BDBF5F727DBFF150057CD37 /* CoreDataManager.swift in Sources */,
