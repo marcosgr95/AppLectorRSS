@@ -10,6 +10,15 @@ While the app is pretty basic, we can see how using presenters instead of view c
 
 Other than that, a singleton pattern is used to manage the Core Data stack, since we want to make sure only one such object is used throughout the app.
 
+## Features
+
+- List of feed's entries.
+- Detail of each entry.
+- Open-in-browser functionality.
+- Filtering by entry's title.
+- Offline behavior.
+- Pull-to-refresh gesture to refresh the data without killing the app.
+
 ## Appearance
 
 ### iPhone
