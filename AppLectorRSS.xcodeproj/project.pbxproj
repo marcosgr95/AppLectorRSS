@@ -14,9 +14,7 @@
 		6BDBF5E627DA88270057CD37 /* AppLectorRSS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF5E427DA88270057CD37 /* AppLectorRSS.xcdatamodeld */; };
 		6BDBF5E827DA88290057CD37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BDBF5E727DA88290057CD37 /* Assets.xcassets */; };
 		6BDBF5EB27DA88290057CD37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BDBF5E927DA88290057CD37 /* LaunchScreen.storyboard */; };
-		6BDBF5F427DA921E0057CD37 /* XMLParsing in Frameworks */ = {isa = PBXBuildFile; productRef = 6BDBF5F327DA921E0057CD37 /* XMLParsing */; };
 		6BDBF5F727DBFF150057CD37 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF5F627DBFF150057CD37 /* CoreDataManager.swift */; };
-		6BDBF5FA27DC03930057CD37 /* SWXMLHash in Frameworks */ = {isa = PBXBuildFile; productRef = 6BDBF5F927DC03930057CD37 /* SWXMLHash */; };
 		6BDBF5FD27DCBFD80057CD37 /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF5FC27DCBFD80057CD37 /* FeedParser.swift */; };
 		6BDBF60327DDF9930057CD37 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF60227DDF9930057CD37 /* String+Extension.swift */; };
 		6BDBF60627DDFD760057CD37 /* EntryListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF60527DDFD760057CD37 /* EntryListPresenter.swift */; };
@@ -69,8 +67,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BDBF5FA27DC03930057CD37 /* SWXMLHash in Frameworks */,
-				6BDBF5F427DA921E0057CD37 /* XMLParsing in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,8 +242,6 @@
 			);
 			name = AppLectorRSS;
 			packageProductDependencies = (
-				6BDBF5F327DA921E0057CD37 /* XMLParsing */,
-				6BDBF5F927DC03930057CD37 /* SWXMLHash */,
 			);
 			productName = AppLectorRSS;
 			productReference = 6BDBF5D827DA88270057CD37 /* AppLectorRSS.app */;
@@ -278,8 +272,6 @@
 			);
 			mainGroup = 6BDBF5CF27DA88270057CD37;
 			packageReferences = (
-				6BDBF5F227DA921E0057CD37 /* XCRemoteSwiftPackageReference "XMLParsing" */,
-				6BDBF5F827DC03930057CD37 /* XCRemoteSwiftPackageReference "SWXMLHash" */,
 			);
 			productRefGroup = 6BDBF5D927DA88270057CD37 /* Products */;
 			projectDirPath = "";
@@ -546,38 +538,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		6BDBF5F227DA921E0057CD37 /* XCRemoteSwiftPackageReference "XMLParsing" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ShawnMoore/XMLParsing";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.3;
-			};
-		};
-		6BDBF5F827DC03930057CD37 /* XCRemoteSwiftPackageReference "SWXMLHash" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/drmohundro/SWXMLHash";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		6BDBF5F327DA921E0057CD37 /* XMLParsing */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6BDBF5F227DA921E0057CD37 /* XCRemoteSwiftPackageReference "XMLParsing" */;
-			productName = XMLParsing;
-		};
-		6BDBF5F927DC03930057CD37 /* SWXMLHash */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6BDBF5F827DC03930057CD37 /* XCRemoteSwiftPackageReference "SWXMLHash" */;
-			productName = SWXMLHash;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		6BDBF5E427DA88270057CD37 /* AppLectorRSS.xcdatamodeld */ = {

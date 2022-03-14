@@ -48,6 +48,7 @@ extension FeedParser: XMLParserDelegate {
 
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         xmlString = ""
+        // When we find a <feed> or <entry> tag, we must create an entity of one of those types
         if elementName == TagKeys.feed {
             feed = Feed(context: CoreDataManager.shared.persistentContainer.viewContext)
         } else if elementName == TagKeys.entry {
@@ -60,11 +61,13 @@ extension FeedParser: XMLParserDelegate {
     }
 
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        // If currentEntry isn't nil it means we're reading a <entry> tag
         if currentEntry != nil {
             if elementName == TagKeys.title {
                 currentEntry?.title = xmlString
             } else if elementName == TagKeys.entry {
                 feed?.entries?.insert(currentEntry!)
+                // Once the <entry> tag has reached its end, currentEntry is set to nil
                 currentEntry = nil
             } else if elementName == TagKeys.published {
                 currentEntry?.published = Date.theVergeRSSDateFormatter.date(from: xmlString)
@@ -81,6 +84,7 @@ extension FeedParser: XMLParserDelegate {
                 currentEntry?.link = xmlString
             }
         } else {
+            // Otherwise, we're dealing with a <feed> tag
             if elementName == TagKeys.updatedDate {
                 feed?.updatedDate = Date.theVergeRSSDateFormatter.date(from: xmlString)
             }

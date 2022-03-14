@@ -47,6 +47,8 @@ class EntryListPresenter {
                 throw NetworkingError.badRequest
             }
             let parser = FeedParser(withXMLData: data)
+
+            // This method will trigger the creation of Core Data entities, hence the call to saveContext afterwards
             parser.parse()
             
             CoreDataManager.shared.saveContext()

@@ -9,7 +9,6 @@ import UIKit
 
 class EntryListViewController: UIViewController, EntryListPresenterDelegate {
 
-
     // MARK: - IBOutlets
 
     @IBOutlet var entriesTableView: UITableView!
@@ -36,7 +35,7 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
 
     // MARK: - Private methods
 
-    func applyStyles() {
+    private func applyStyles() {
         title = "The Verge RSS Feed"
     }
 
@@ -67,15 +66,15 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
         }
     }
 
-    func setLastUpdate() {
+    private func setLastUpdate() {
         lastUpdateLabel.text = "Last update: \(Date.humanFriendlyDateFormat.string(from: feed?.updatedDate ?? Date()))"
     }
 
-    func setUpSearchBar() {
+    private func setUpSearchBar() {
         searchBar.delegate = self
     }
 
-    func setUpTableView() {
+    private func setUpTableView() {
         entriesTableView.delegate = self
         entriesTableView.dataSource = self
         entriesTableView.register(UINib(nibName: EntryCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: EntryCell.reuseIdentifier)
@@ -84,14 +83,17 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
 
     // MARK: - EntryListPresenterDelegate methods
 
-    fileprivate func displayEntries(_ entries: [Entry], updateLastUpdate: Bool = true) {
-        self.entries = entries.sorted(by: <)
+    private func displayEntries(_ entries: [Entry], updateLastUpdate: Bool = true) {
         DispatchQueue.main.async {
+            self.entries = entries.sorted(by: <)
             self.entriesTableView.reloadData()
             self.setLastUpdate()
         }
     }
 
+    /***
+     Method to display a feed after the API call
+     */
     func presentFeed(_ feed: Feed?, _ error: NetworkingError?) {
         Task {
             if let error = error {
@@ -102,11 +104,17 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
         }
     }
 
+    /***
+     Method to present an entry's detail
+     */
     func presentDetail(entry: Entry) {
         let detailVC = EntryDetailViewController(entry: entry)
         navigationController?.pushViewController(detailVC, animated: true)
     }
 
+    /***
+     Method to display an array of entries after the searching by title
+     */
     func presentEntries(_ entries: [Entry]) {
         displayEntries(entries, updateLastUpdate: false)
     }

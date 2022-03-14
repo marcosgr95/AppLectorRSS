@@ -32,6 +32,7 @@ extension EntryListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // The search bar loses the focus (in case it has it) when the user scrolls up and down the tableView
         searchBar.resignFirstResponder()
     }
 

@@ -15,9 +15,9 @@ class EntryCell: UITableViewCell {
 
     // MARK: - IBOutlets
 
+    @IBOutlet var entryDescription: UILabel!
     @IBOutlet var entryPicture: UIImageView!
     @IBOutlet var entryTitle: UILabel!
-    @IBOutlet var entryDescription: UILabel!
     
     // MARK: - Public methods
 

@@ -9,12 +9,18 @@ import Foundation
 
 extension Date {
 
+    /***
+     Formatter to parse the dates sent by the RSS feed
+     */
     static let theVergeRSSDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         return formatter
     }()
 
+    /***
+     Formatter to parse and display the dates in a more human-friendly way
+     */
     static let humanFriendlyDateFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
