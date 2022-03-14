@@ -13,9 +13,9 @@ class Feed: NSManagedObject {
 
     // MARK: - Variables
 
-    @NSManaged var updatedDate: Date?
-    @NSManaged var title: String?
     @NSManaged var link: String?
+    @NSManaged var title: String?
+    @NSManaged var updatedDate: Date?
 
     // MARK: - Relationships
 

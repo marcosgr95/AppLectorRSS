@@ -13,11 +13,12 @@ class Entry: NSManagedObject {
 
     // MARK: - Variables
 
-    @NSManaged var published: Date?
-    @NSManaged var updatedDate: Date?
     @NSManaged var content: String?
-    @NSManaged var title: String?
     @NSManaged var link: String?
+    @NSManaged var picture: Data?
+    @NSManaged var published: Date?
+    @NSManaged var title: String?
+    @NSManaged var updatedDate: Date?
 
     // MARK: - Fetch requests
 

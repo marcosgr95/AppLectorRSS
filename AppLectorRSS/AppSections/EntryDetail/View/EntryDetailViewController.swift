@@ -55,7 +55,11 @@ class EntryDetailViewController: UIViewController, EntryDetailPresenterDelegate 
     private func displayInfo() {
         titleLabel.text = entry.title
         descriptionLabel.text = entry.content?.htmlToString(withTrimmedTags: true)
-        picture.load(urlString: entry.content?.getEmbeddedImgLink())
+        guard let imageData = entry.picture else {
+            picture.image = UIImageView.defaultImage
+            return
+        }
+        picture.image = UIImage(data: imageData)
     }
 
     @objc private func openInBrowser() {

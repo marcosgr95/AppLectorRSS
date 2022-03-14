@@ -19,7 +19,7 @@ extension EntryListViewController: UITableViewDelegate, UITableViewDataSource {
         else { return UITableViewCell() }
 
         cell.configure(
-            pictureURL: entries[indexPath.row].content?.getEmbeddedImgLink(),
+            picture: entries[indexPath.row].picture,
             title: entries[indexPath.row].title,
             description: entries[indexPath.row].content
         )

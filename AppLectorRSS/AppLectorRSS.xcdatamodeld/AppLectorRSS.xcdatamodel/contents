@@ -3,6 +3,7 @@
     <entity name="Entry" representedClassName=".Entry" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String"/>
         <attribute name="link" optional="YES" attributeType="String"/>
+        <attribute name="picture" optional="YES" attributeType="Binary"/>
         <attribute name="published" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="updatedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -15,7 +16,7 @@
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entry" inverseName="feed" inverseEntity="Entry"/>
     </entity>
     <elements>
-        <element name="Entry" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Entry" positionX="-63" positionY="-18" width="128" height="134"/>
         <element name="Feed" positionX="-54" positionY="-18" width="128" height="89"/>
     </elements>
 </model>

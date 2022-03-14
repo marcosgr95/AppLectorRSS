@@ -9,26 +9,34 @@ import Foundation
 
 class FeedParser: NSObject {
 
+    // Keys to iterate over the xml feed
+
     struct TagKeys {
 
-        static let feed = "feed"
-        static let entry = "entry"
-        static let title = "title"
-        static let published = "published"
-        static let updatedDate = "updated"
         static let content = "content"
+        static let entry = "entry"
+        static let feed = "feed"
         static let link = "id"
+        static let published = "published"
+        static let title = "title"
+        static let updatedDate = "updated"
         
     }
 
-    var feed: Feed?
-    var xmlString: String = ""
+    // MARK: - Variables
+
     var currentEntry: Entry?
+    var feed: Feed?
     var xmlParser: XMLParser?
+    var xmlString: String = ""
+
+    // MARK: - Init method
 
     init(withXMLData xml: Data) {
         xmlParser = XMLParser(data: xml)
     }
+
+    // MARK: - Methods
 
     func parse() -> Void {
         xmlParser?.delegate = self
@@ -64,6 +72,11 @@ extension FeedParser: XMLParserDelegate {
                 currentEntry?.updatedDate = Date.theVergeRSSDateFormatter.date(from: xmlString)
             } else if elementName == TagKeys.content {
                 currentEntry?.content = xmlString
+                guard
+                    let pictureLink = xmlString.getEmbeddedImgLink(),
+                    let url = URL(string: pictureLink)
+                else { return }
+                currentEntry?.picture = try? Data.init(contentsOf: url)
             } else if elementName == TagKeys.link {
                 currentEntry?.link = xmlString
             }

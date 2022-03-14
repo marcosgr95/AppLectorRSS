@@ -21,10 +21,14 @@ class EntryCell: UITableViewCell {
     
     // MARK: - Public methods
 
-    public func configure(pictureURL: String?, title: String?, description: String?) {
+    public func configure(picture: Data?, title: String?, description: String?) {
         entryTitle.text = title
         entryDescription.text = description?.htmlToString(withTrimmedTags: true)
-        entryPicture.load(urlString: pictureURL)
+        guard let imageData = picture else {
+            entryPicture.image = UIImageView.defaultImage
+            return
+        }
+        entryPicture.image = UIImage(data: imageData)
     }
 
     

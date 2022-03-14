@@ -13,24 +13,4 @@ extension UIImageView {
         UIImage(systemName: "photo")?.withTintColor(.lightGray)
     }
 
-    func load(urlString: String?) {
-        self.image = UIImageView.defaultImage
-        guard
-            let urlString = urlString,
-            let url = URL(string: urlString)
-        else { return }
-        load(url: url)
-    }
-
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-    }
 }
