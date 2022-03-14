@@ -10,6 +10,7 @@ import Foundation
 protocol EntryListPresenterDelegate: AnyObject {
     func presentDetail(entry: Entry)
     func presentFeed(_ feed: Feed?, _ error: NetworkingError?)
+    func presentEntries(_ entries: [Entry])
 }
 
 class EntryListPresenter {
@@ -22,6 +23,14 @@ class EntryListPresenter {
 
     public func presentDetail(entry: Entry) {
         view?.presentDetail(entry: entry)
+    }
+
+    public func presentFilteredResults(queryText: String) {
+        do {
+            view?.presentEntries(try CoreDataManager.shared.fetchEntriesByTitle(queryText))
+        } catch {
+            fatalError("The Core Data stack hasn't been configured properly!!")
+        }
     }
 
     public func readFeed() async throws {

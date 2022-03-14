@@ -31,4 +31,8 @@ extension EntryListViewController: UITableViewDelegate, UITableViewDataSource {
         presenter.presentDetail(entry: entries[indexPath.row])
     }
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchBar.resignFirstResponder()
+    }
+
 }

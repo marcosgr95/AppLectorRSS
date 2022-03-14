@@ -26,6 +26,16 @@ class Entry: NSManagedObject {
         return NSFetchRequest<Entry>(entityName: "Entry")
     }
 
+    @nonobjc public class func fetchRequestByTitle(_ titleQuery: String?) -> NSFetchRequest<Entry> {
+        guard let titleQuery = titleQuery, !titleQuery.isEmpty else {
+            return fetchRequest()
+        }
+
+        let fetchRequest = NSFetchRequest<Entry>(entityName: "Entry")
+        fetchRequest.predicate = NSPredicate(format: "title CONTAINS[c] %@", titleQuery)
+        return fetchRequest
+    }
+
 }
 
 extension Entry: Comparable {

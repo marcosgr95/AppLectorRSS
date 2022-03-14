@@ -14,6 +14,7 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
 
     @IBOutlet var entriesTableView: UITableView!
     @IBOutlet var lastUpdateLabel: UILabel!
+    @IBOutlet var searchBar: UISearchBar!
 
     // MARK: - Variables
 
@@ -28,6 +29,7 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
 
         presenter.setView(self)
         setUpTableView()
+        setUpSearchBar()
         applyStyles()
         readFeed()
     }
@@ -45,6 +47,8 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
 
     @objc private func handleRefreshControl() {
         entries = []
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
         entriesTableView.reloadData()
         readFeed()
     }
@@ -66,7 +70,11 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
     func setLastUpdate() {
         lastUpdateLabel.text = "Last update: \(Date.humanFriendlyDateFormat.string(from: feed?.updatedDate ?? Date()))"
     }
-    
+
+    func setUpSearchBar() {
+        searchBar.delegate = self
+    }
+
     func setUpTableView() {
         entriesTableView.delegate = self
         entriesTableView.dataSource = self
@@ -76,17 +84,21 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
 
     // MARK: - EntryListPresenterDelegate methods
 
+    fileprivate func displayEntries(_ entries: [Entry], updateLastUpdate: Bool = true) {
+        self.entries = entries.sorted(by: <)
+        DispatchQueue.main.async {
+            self.entriesTableView.reloadData()
+            self.setLastUpdate()
+        }
+    }
+
     func presentFeed(_ feed: Feed?, _ error: NetworkingError?) {
         Task {
             if let error = error {
                 self.showNetworkingErrorAlert(error)
             }
             self.feed = feed
-            self.entries = Array(feed?.entries ?? []).sorted(by: <)
-            DispatchQueue.main.async {
-                self.entriesTableView.reloadData()
-                self.setLastUpdate()
-            }
+            displayEntries(Array(feed?.entries ?? []))
         }
     }
 
@@ -95,4 +107,15 @@ class EntryListViewController: UIViewController, EntryListPresenterDelegate {
         navigationController?.pushViewController(detailVC, animated: true)
     }
 
+    func presentEntries(_ entries: [Entry]) {
+        displayEntries(entries, updateLastUpdate: false)
+    }
+
+}
+
+extension EntryListViewController: UISearchBarDelegate {
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter.presentFilteredResults(queryText: searchText)
+    }
 }
